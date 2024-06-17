@@ -94,6 +94,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Сопровождение облака и управление ресурсами</a><ul>
+<li><a class="reference internal" href="#api">Доступ к API облака</a></li>
 <li><a class="reference internal" href="#id2">Флейворы</a></li>
 </ul>
 </li>
@@ -146,6 +147,31 @@
       
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>Сопровождение облака и управление ресурсами<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<section id="api">
+<h2>Доступ к API облака<a class="headerlink" href="#api" title="Ссылка на этот заголовок">¶</a></h2>
+<p>После развёртывания облака на узле развёртывания появляется файл <code class="docutils literal notranslate"><span class="pre">&lt;deployment-name&gt;rc</span></code>.</p>
+<p>Для управления ресурсами через CLI выполните</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>&lt;deployment-name&gt;rc
+</pre></div>
+</div>
+<p>Например</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>asperitasrc
+</pre></div>
+</div>
+<p>Обратите внимание, что управление ресурсами развёрнутого облака на узле развёртывания
+также требует предварительного <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">stackrc</span></code> с того же узла.</p>
+<p>Файл <code class="docutils literal notranslate"><span class="pre">&lt;deployment-name&gt;rc</span></code> содержит переменные окружения, где указывается
+адрес сервиса аутентификации Keystone и учётные данные для пользователя <code class="docutils literal notranslate"><span class="pre">admin</span></code>.</p>
+<p>Если вы использовали доменное имя для эндпойнтов во вкладке <code class="docutils literal notranslate"><span class="pre">Endpoint</span> <span class="pre">Data</span></code>, то
+все публичные эндпойнты будут находиться по настроенному вами доменному адресу
+или <code class="docutils literal notranslate"><span class="pre">overcloud.localdomain</span></code> по умолчанию.</p>
+<p>Чтобы посмотреть IP-адрес для вашего облака выполните</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>stackrc
+openstack<span class="w"> </span>port<span class="w"> </span>show<span class="w"> </span>public_virtual_ip<span class="w"> </span>-c<span class="w"> </span>fixed_ips
+</pre></div>
+</div>
+<p>Web-доступ к управлению облаком также доступен по указанному адресу.</p>
+</section>
 <section id="id2">
 <h2>Флейворы<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Для создания флейворов используется команда</p>
